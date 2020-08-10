@@ -1,4 +1,4 @@
-# [DS&A Progress Tracker](http://dsa-progress-tracker.s3-website.us-east-2.amazonaws.com/)
+# [DS&A Progress Tracker](https://dsa-progress-tracker.s3-website.us-east-2.amazonaws.com/)
 
 ## Basic Overview
 DS&A Progress Tracker is a tracking app that users can log their progress on DS&A.  
