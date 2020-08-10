@@ -1,0 +1,63 @@
+<mat-card>
+    <mat-spinner *ngIf="isLoading" ></mat-spinner>
+    <form (submit)="onSaveProblem(problemForm)" #problemForm="ngForm"  *ngIf="!isLoading" >
+           <div>
+                <mat-form-field>
+                    <input 
+                    matInput 
+                    type="text" 
+                    name="title" 
+                    [ngModel]="problem?.title" 
+                    required placeholder="Problem Title/Number" 
+                    #title="ngModel">
+                    <mat-error *ngIf="title.invalid">
+                        Please add a title
+                    </mat-error>
+                </mat-form-field>
+           </div>
+           <div >
+               <div>
+                 <label>Did you solve it without looking at hints/solution?</label>
+               </div>
+                <div>
+                    <mat-radio-group 
+                    class="radiobutton-margin" 
+                    required 
+                    ngModel 
+                    name="solved"
+                    [ngModel]="problem?.solved" 
+                    #solved="ngModel"
+                    (change)="handleChange($event)" >
+                        <mat-radio-button value="true" required>
+                            Yes
+                        </mat-radio-button>
+                        <mat-radio-button value="false" required>
+                            No
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>
+            <div>
+                <mat-form-field [hidden]="!solvedOrNot" *ngIf="!solvedOrNot && !default ||  problem?.reasons && !solvedOrNot ">
+                    <textarea  
+                    required 
+                    matInput 
+                    placeholder="State the reasons why you couldn't solve it." 
+                    name="reasons" 
+                    cols="45" 
+                    rows="6"
+                    [ngModel]="problem?.reasons"  
+                    #reasons="ngModel">
+                    </textarea>
+                    <mat-error *ngIf="reasons.invalid">
+                        Add the reasons why you couldn't solve it.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+                <div class="keep-up-msg">
+                        <p *ngIf="solvedOrNot" >Great Job! Keep up the good work!</p>              
+                </div>
+            <br> 
+        <button mat-raised-button color="accent" type="submit" [disabled]="solved.invalid">Save</button>
+    </form>
+</mat-card>

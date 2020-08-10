@@ -1,0 +1,25 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-accordion *ngIf="problems.length > 0 && !isLoading ">
+   <mat-expansion-panel *ngFor="let problem of problems" >
+        <mat-expansion-panel-header>
+           <div [className]="problem.solved === 'true' ? 'solved-class' : 'not-solved-class'">
+            Problem Title:  {{ problem.title }}
+           </div>
+        </mat-expansion-panel-header>
+        <hr>
+        <p *ngIf="problem.solved === 'true'">You solved this question!</p>
+        <p>{{ problem.reasons }} </p>
+         <mat-action-row>
+            <a *ngIf="userIsAuthenticated" mat-stroked-button color="accent" [routerLink]="['/edit', problem.id]">EDIT</a>
+            <button *ngIf="userIsAuthenticated" mat-stroked-button color="warn" (click)="onDelete(problem.id)">DELETE</button>
+         </mat-action-row>
+    </mat-expansion-panel>
+</mat-accordion>
+<mat-paginator 
+[length]="totalProbs" 
+[pageSize]="rowsPerPage" 
+[pageSizeOptions]="pageSizeOptions" 
+(page)="onChangedPage($event)"
+*ngIf="problems.length > 0">
+</mat-paginator>
+<p class="no-problem-added mat-body-2" *ngIf="problems.length <= 0 && !isLoading">No Problems added yet</p>

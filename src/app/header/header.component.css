@@ -1,0 +1,92 @@
+ a {
+    color: white ;
+    text-decoration: none;
+    display: inline-block;
+}
+
+mat-nav-list a + button{
+    text-align: left;
+    color: white;
+}
+
+mat-nav-list a {
+    text-align: left;
+    color: white;
+}
+
+
+mat-toolbar {
+    background-color: #8f8c8d;;
+    color: white;
+}
+
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.sidenav-container {
+    height: 100%;
+}
+
+.sidenav {
+    width: 200px;
+    color: white;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+mat-toolbar button {
+    color: white;
+}
+
+.sidenav .mat-toolbar {
+    background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+/* // here  */
+html, body {
+    height: 100%;
+}
+
+mat-toolbar.button{ 
+    color: white;
+}
+/*  
+
+@media (min-width: 500px) {
+    .sidenav {
+        display: none;
+    }
+} */
+
+.hidden{ 
+    display: none;
+}
+
+.mat-list-base {
+    padding-top: 8px;
+    display: flex;
+    -webkit-tap-highlight-color: transparent;
+    flex-direction: column;
+}
+
+mat-sidenav-container {
+        background-color: #b0aeae;
+}
+
+.mat-sidenav {
+    background-color:#8f8c8d;
+}
+
+
+.mat-button.mat-accent {
+    color: #24305e;
+}

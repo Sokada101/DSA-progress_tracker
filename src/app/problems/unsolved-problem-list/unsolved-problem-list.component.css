@@ -1,0 +1,29 @@
+:host {
+    display: block;
+    margin-top: 1rem;
+}
+
+.no-problem-added {
+    text-align: center;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+}
+
+mat-spinner {
+    margin: auto;
+}
+
+.solved-class {
+    color: #374785;
+}
+
+.not-solved-class {
+    color: #f76c6c;
+}
+
+mat-paginator {
+    margin-top: 1rem;
+}

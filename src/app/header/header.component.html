@@ -1,0 +1,42 @@
+<mat-sidenav-container class="sidenav-container">
+
+    <mat-sidenav-content>
+        <mat-toolbar >
+            <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" 
+                *ngIf="isHandset$ | async">
+                <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+            </button>
+            <span><a routerLink="/">DS&A Progress Tracker</a></span>
+            <span class="spacer"></span>
+            <a  [ngClass]="{hidden: (isHandset$ | async)}" *ngIf="userIsAuthenticated" mat-button routerLink="/create" routerLinkActive="mat-accent">Add a Problem</a>
+            <a   [ngClass]="{hidden: (isHandset$ | async)}" *ngIf="userIsAuthenticated" mat-button routerLink="/problems/all" routerLinkActive="mat-accent">All Problems</a>
+            <a  [ngClass]="{hidden: (isHandset$ | async)}" *ngIf="userIsAuthenticated" mat-button routerLink="/problems/solved" routerLinkActive="mat-accent">Solved
+                Problems</a>
+            <a [ngClass]="{hidden: (isHandset$ | async)}" *ngIf="userIsAuthenticated" mat-button routerLink="/problems/unsolved" routerLinkActive="mat-accent">Unsolved
+                Problems</a>
+            <a  [ngClass]="{hidden: (isHandset$ | async)}" *ngIf="!userIsAuthenticated" mat-button routerLink="/auth/login" routerLinkActive="mat-accent">Log In</a>
+            <a [ngClass]="{hidden: (isHandset$ | async)}" *ngIf="!userIsAuthenticated" mat-button routerLink="/auth/signup" routerLinkActive="mat-accent">Sign Up</a>
+            <button [ngClass]="{hidden: (isHandset$ | async)}" *ngIf="userIsAuthenticated" (click)="onLogout()" mat-button routerLinkActive="mat-accent" >Log Out</button>
+        </mat-toolbar>
+        <!-- Add Content Here -->
+        <ng-content></ng-content>
+    </mat-sidenav-content>
+
+        <mat-sidenav #drawer class="sidenav" [ngClass]="{hidden: !(isHandset$ | async)}" fixedInViewport=false [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+            [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+            <mat-toolbar>Menu</mat-toolbar>
+            <mat-nav-list>
+                <a *ngIf="userIsAuthenticated" mat-button routerLink="/create" routerLinkActive="mat-accent">Add a Problem</a>
+                <a *ngIf="userIsAuthenticated" mat-button routerLink="/problems/all" routerLinkActive="mat-accent">All
+                    Problems</a>
+                <a *ngIf="userIsAuthenticated" mat-button routerLink="/problems/solved" routerLinkActive="mat-accent">Solved
+                    Problems</a>
+                <a *ngIf="userIsAuthenticated" mat-button routerLink="/problems/unsolved" routerLinkActive="mat-accent">Unsolved
+                    Problems</a>
+                <a *ngIf="!userIsAuthenticated" mat-button routerLink="/auth/login" routerLinkActive="mat-accent">Log In</a>
+                <a *ngIf="!userIsAuthenticated" mat-button routerLink="/auth/signup" routerLinkActive="mat-accent">Sign Up</a>
+                <button *ngIf="userIsAuthenticated" (click)="onLogout()" mat-button routerLinkActive="mat-accent">Log
+                    Out</button>
+            </mat-nav-list>
+        </mat-sidenav>
+</mat-sidenav-container>
