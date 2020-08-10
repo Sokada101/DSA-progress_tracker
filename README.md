@@ -8,15 +8,13 @@ DS&A Progress Tracker is a tracking app that users can log their progress on DS&
 DS&A Progress Tracker was built using:
 
 Front End
-
-Angular CLI 10.0.4
-CSS/HTML
+* Angular CLI 10.0.4
+* CSS/HTML
 
 Back End
-
-MongoDB (mongoose 5.9.26)
-Express 4.17.1
-Node.js 10.13.0
+* MongoDB (mongoose 5.9.26)
+* Express 4.17.1
+* Node.js 10.13.0
 
 ## Features
 
