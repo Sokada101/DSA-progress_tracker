@@ -16,6 +16,7 @@
                 Problems</a>
             <a  [ngClass]="{hidden: (isHandset$ | async)}" *ngIf="!userIsAuthenticated" mat-button routerLink="/auth/login" routerLinkActive="mat-accent">Log In</a>
             <a [ngClass]="{hidden: (isHandset$ | async)}" *ngIf="!userIsAuthenticated" mat-button routerLink="/auth/signup" routerLinkActive="mat-accent">Sign Up</a>
+            <a [ngClass]="{hidden: (isHandset$ | async)}" *ngIf="!userIsAuthenticated" mat-button routerLink="/auth/demologin" routerLinkActive="mat-accent">Demo Log In</a>
             <button [ngClass]="{hidden: (isHandset$ | async)}" *ngIf="userIsAuthenticated" (click)="onLogout()" mat-button routerLinkActive="mat-accent" >Log Out</button>
         </mat-toolbar>
         <!-- Add Content Here -->
