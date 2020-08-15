@@ -64,7 +64,7 @@ exports.getProblems = (req, res, next) => {
   probQuery
     .then((data) => {
       fetchedProblems = data;
-      return Problem.count();
+      return Problem.countDocuments({ creator: req.userData.userId});
     })
     .then((count) => {
       res.status(200).json({
@@ -95,7 +95,7 @@ exports.getUnsolvedProblems = (req, res, next) => {
   probQuery
     .then((data) => {
       fetchedProblems = data;
-      return Problem.count();
+      return Problem.countDocuments({ creator: req.userData.userId });
     })
     .then((count) => {
       res.status(200).json({
@@ -126,7 +126,7 @@ exports.getSolvedProblems = (req, res, next) => {
   probQuery
     .then((data) => {
       fetchedProblems = data;
-      return Problem.count();
+      return Problem.countDocuments({ creator: req.userData.userId });
     })
     .then((count) => {
       res.status(200).json({

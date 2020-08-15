@@ -14,8 +14,7 @@ import { ProblemsModule } from "./problems/problem.module";
  
 import { AuthInterceptor } from "./auth/auth-interceptor";
 import { ErrorInterceptor } from './error-interceptor';
-
-
+import { Ng2SearchPipeModule } from "ng2-search-filter";
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, ErrorComponent],
@@ -27,6 +26,7 @@ import { ErrorInterceptor } from './error-interceptor';
     AngularMaterialModule,
     HttpClientModule,
     FlexLayoutModule,
+    Ng2SearchPipeModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

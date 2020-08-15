@@ -17,7 +17,7 @@ export class ProblemListComponent implements OnInit, OnDestroy {
   isLoading = false;
   userId: string;
   totalProbs = 0;
-  rowsPerPage = 10;
+  rowsPerPage = 5;
   currentPage = 1;
   pageSizeOptions = [5, 10, 20, 50];
   userIsAuthenticated = false;

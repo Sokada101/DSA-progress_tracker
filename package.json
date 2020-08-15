@@ -30,6 +30,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.26",
     "mongoose-unique-validator": "^2.0.3",
+    "ng2-search-filter": "^0.5.1",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"

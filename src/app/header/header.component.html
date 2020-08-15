@@ -7,6 +7,7 @@
                 <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
             </button>
             <span><a routerLink="/">DS&A Progress Tracker</a></span>
+
             <span class="spacer"></span>
             <a  [ngClass]="{hidden: (isHandset$ | async)}" *ngIf="userIsAuthenticated" mat-button routerLink="/create" routerLinkActive="mat-accent">Add a Problem</a>
             <a   [ngClass]="{hidden: (isHandset$ | async)}" *ngIf="userIsAuthenticated" mat-button routerLink="/problems/all" routerLinkActive="mat-accent">All Problems</a>
