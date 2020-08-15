@@ -28,7 +28,6 @@ export class DemoLoginComponent implements OnInit, OnDestroy {
     if (form.invalid) {
       return;
     }
-    debugger
     this.isLoading = true;
     this.authService.login(form.value.email, form.value.password);
   }

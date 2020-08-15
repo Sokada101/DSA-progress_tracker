@@ -13,6 +13,7 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./problem-list.component.css'],
 })
 export class ProblemListComponent implements OnInit, OnDestroy {
+  searchText  = "";
   problems: Problem[] = [];
   isLoading = false;
   userId: string;

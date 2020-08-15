@@ -7,13 +7,15 @@ import { SolvedProblemListComponent } from "./solved-problem-list/solved-problem
 import { UnsolvedProblemListComponent } from "./unsolved-problem-list/unsolved-problem-list.component";
 import { AngularMaterialModule } from '../angular-material.module';
 import { RouterModule } from '@angular/router';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
       ProblemCreateComponent, 
       ProblemListComponent,
       SolvedProblemListComponent,
-      UnsolvedProblemListComponent
+      UnsolvedProblemListComponent,
+      FilterPipe
     ],
     imports: [
         CommonModule,

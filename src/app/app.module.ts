@@ -11,13 +11,13 @@ import { AppComponent } from './app.component';
 import { ErrorComponent } from './error/error.component';
 import { HeaderComponent } from './header/header.component'; 
 import { ProblemsModule } from "./problems/problem.module";
+import { FilterPipe } from './problems/pipes/filter.pipe';
  
 import { AuthInterceptor } from "./auth/auth-interceptor";
 import { ErrorInterceptor } from './error-interceptor';
-import { Ng2SearchPipeModule } from "ng2-search-filter";
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, ErrorComponent],
+  declarations: [AppComponent, HeaderComponent, ErrorComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -26,7 +26,6 @@ import { Ng2SearchPipeModule } from "ng2-search-filter";
     AngularMaterialModule,
     HttpClientModule,
     FlexLayoutModule,
-    Ng2SearchPipeModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

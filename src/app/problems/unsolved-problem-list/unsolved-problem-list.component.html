@@ -1,6 +1,7 @@
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 <mat-accordion *ngIf="problems.length > 0 && !isLoading ">
-   <mat-expansion-panel *ngFor="let problem of problems" >
+      <input type="text" [(ngModel)]="searchText" placeholder="search">
+   <mat-expansion-panel *ngFor="let problem of problems | filter: searchText" >
         <mat-expansion-panel-header>
            <div [className]="problem.solved === 'true' ? 'solved-class' : 'not-solved-class'">
             Problem Title:  {{ problem.title }}
