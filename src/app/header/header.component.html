@@ -37,6 +37,8 @@
                     Problems</a>
                 <a *ngIf="!userIsAuthenticated" mat-button routerLink="/auth/login" routerLinkActive="mat-accent">Log In</a>
                 <a *ngIf="!userIsAuthenticated" mat-button routerLink="/auth/signup" routerLinkActive="mat-accent">Sign Up</a>
+                <a  *ngIf="!userIsAuthenticated" mat-button routerLink="/auth/demologin"
+                                routerLinkActive="mat-accent">Demo Log In</a>
                 <button *ngIf="userIsAuthenticated" (click)="onLogout()" mat-button routerLinkActive="mat-accent">Log
                     Out</button>
             </mat-nav-list>

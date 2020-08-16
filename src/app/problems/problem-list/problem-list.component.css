@@ -27,3 +27,19 @@ mat-spinner {
 mat-paginator {
     margin-top: 1rem;
 }
+
+.material-icons {
+    color: white;
+}
+
+.search-box {
+   outline: none;
+   color:  #24305e;
+   margin: 1rem 0;
+   align-items: flex-end;
+}
+
+div.search-bar {
+    /* display: flex; */
+    align-items: flex-end;
+}
