@@ -43,3 +43,7 @@ div.search-bar {
     /* display: flex; */
     align-items: flex-end;
 }
+
+.prob-reason {
+    white-space: pre-line;
+}

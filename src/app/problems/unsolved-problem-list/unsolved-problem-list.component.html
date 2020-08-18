@@ -15,7 +15,7 @@
         </mat-expansion-panel-header>
         <hr>
         <p *ngIf="problem.solved === 'true'">You solved this question!</p>
-        <p>{{ problem.reasons }} </p>
+        <p  class="prob-reason">{{ problem.reasons }} </p>
          <mat-action-row>
             <a *ngIf="userIsAuthenticated" mat-stroked-button color="accent" [routerLink]="['/edit', problem.id]">EDIT</a>
             <button *ngIf="userIsAuthenticated" mat-button color="warn" (click)="onDelete(problem.id)">DELETE</button>
