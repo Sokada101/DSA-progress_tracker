@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div>
-                <mat-form-field [hidden]="!solvedOrNot" *ngIf="!solvedOrNot && !default ||  problem?.reasons && !solvedOrNot ">
+                <mat-form-field class="prob-reason" [hidden]="!solvedOrNot" *ngIf="!solvedOrNot && !default ||  problem?.reasons && !solvedOrNot ">
                     <textarea  
                     required 
                     matInput 

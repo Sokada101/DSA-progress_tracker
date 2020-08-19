@@ -30,6 +30,7 @@ mat-paginator {
 
 .material-icons {
     color: white;
+    padding: 0 0.5rem 0 0;
 }
 
 .search-box {
@@ -37,13 +38,43 @@ mat-paginator {
    color:  #24305e;
    margin: 1rem 0;
    align-items: flex-end;
+   
 }
+
+::placeholder {
+   color: white;
+}
+
+.prob-reason {
+   white-space: pre-line;
+}
+
+.search-input {
+   margin: 0 0 0.45rem 0;
+}
+
+ ::ng-deep.mat-form-field-underline {
+  background-color: white !important;
+} 
+
+::ng-deep.mat-form-field-ripple {
+ background-color: #374785 !important;;
+}
+
+ ::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: #374785 !important;;
+ }
+
+.prob-bar {
+    justify-items: flex-end;
+}
+
 
 div.search-bar {
     /* display: flex; */
     align-items: flex-end;
 }
-
-.prob-reason {
-    white-space: pre-line;
+.search-input {
+    color: white;
 }

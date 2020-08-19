@@ -25,3 +25,7 @@ p {
 div {
     margin-top: 1rem;
 }
+
+.prob-reason {
+    white-space: pre-line;
+}

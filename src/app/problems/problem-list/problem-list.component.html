@@ -1,12 +1,11 @@
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 <mat-accordion *ngIf="problems.length > 0 && !isLoading ">
    <div class="search-bar">
-      <span class="material-icons">
-         search
-         <input class="search-box" type="text" [(ngModel)]="searchText" placeholder="search">
-      </span>
+            <mat-form-field class="prob-bar">
+               <mat-icon class="material-icons" matPrefix>search</mat-icon>
+               <input matInput type="search" class="search-box" placeholder="Search" class="search-input" [(ngModel)]="searchText">
+            </mat-form-field>
    </div>
-         
    <mat-expansion-panel *ngFor="let problem of problems | filter: searchText" >
         <mat-expansion-panel-header>
            <div [className]="problem.solved === 'true' ? 'solved-class' : 'not-solved-class'">
