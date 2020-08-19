@@ -95,7 +95,7 @@ exports.getUnsolvedProblems = (req, res, next) => {
   probQuery
     .then((data) => {
       fetchedProblems = data;
-      return Problem.countDocuments({ creator: req.userData.userId });
+      return Problem.countDocuments({ creator: req.userData.userId, solved: "false" });
     })
     .then((count) => {
       res.status(200).json({
@@ -126,7 +126,7 @@ exports.getSolvedProblems = (req, res, next) => {
   probQuery
     .then((data) => {
       fetchedProblems = data;
-      return Problem.countDocuments({ creator: req.userData.userId });
+      return Problem.countDocuments({ creator: req.userData.userId, solved: "false" });
     })
     .then((count) => {
       res.status(200).json({
