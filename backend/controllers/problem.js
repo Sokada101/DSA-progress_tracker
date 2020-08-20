@@ -2,6 +2,7 @@ const Problem = require("../models/problem");
 
 exports.createProblem = (req, res, next) => {
   const problem = new Problem({
+    source: req.body.source,
     title: req.body.title,
     reasons: req.body.reasons,
     solved: req.body.solved,
@@ -25,6 +26,7 @@ exports.createProblem = (req, res, next) => {
 exports.updateProblem =( req, res, next) => {
   const problem = new Problem({
     _id: req.body.id,
+    source: req.body.source,
     title: req.body.title,
     reasons: req.body.reasons,
     solved: req.body.solved,

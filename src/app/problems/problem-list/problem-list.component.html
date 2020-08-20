@@ -8,9 +8,12 @@
    </div>
    <mat-expansion-panel *ngFor="let problem of problems | filter: searchText" >
         <mat-expansion-panel-header>
-           <div [className]="problem.solved === 'true' ? 'solved-class' : 'not-solved-class'">
-            Problem Title:  {{ problem.title }}
+           <div [className]="problem.solved === 'true' ? 'solved-class' : 'not-solved-class'" *ngIf="(problem.source)">
+            Problem Title:  {{ problem.title }} from {{ problem.source }}
            </div>
+            <div [className]="problem.solved === 'true' ? 'solved-class' : 'not-solved-class'" *ngIf="!(problem.source)">
+               Problem Title: {{ problem.title }} 
+            </div>
         </mat-expansion-panel-header>
         <hr>
         <p *ngIf="problem.solved === 'true'">You solved this question!</p>

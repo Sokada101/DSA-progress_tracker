@@ -14,7 +14,8 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 
 export class ProblemCreateComponent implements OnInit, OnDestroy {
-    title="";
+    source = "";
+    title = "";
     reasons = "";
     solved = "";
     default = true;
@@ -47,6 +48,7 @@ export class ProblemCreateComponent implements OnInit, OnDestroy {
                     this.isLoading = false;
                     this.problem = {
                         id: problemData._id, 
+                        source: problemData.source,
                         title: problemData.title, 
                         reasons: problemData.reasons, 
                         solved: problemData.solved,
@@ -82,13 +84,14 @@ export class ProblemCreateComponent implements OnInit, OnDestroy {
         }
         this.isLoading = true;
         if(this.mode === 'create') {
-           this.problemsService.addProblem(form.value.title, form.value.reasons, form.value.solved );
+           this.problemsService.addProblem(form.value.source,form.value.title, form.value.reasons, form.value.solved );
         } else {
             if (this.solvedOrNot) { 
                 form.value.reasons = "" 
             };
            this.problemsService.updateProblem(
                this.probId, 
+               form.value.source,
                form.value.title, 
                form.value.reasons, 
                form.value.solved

@@ -1,6 +1,15 @@
 <mat-card>
     <mat-spinner *ngIf="isLoading" ></mat-spinner>
     <form (submit)="onSaveProblem(problemForm)" #problemForm="ngForm"  *ngIf="!isLoading" >
+            <div>
+                <mat-form-field>
+                    <input matInput type="text" name="source" [ngModel]="problem?.source" required placeholder="Problem's source"
+                        #title="ngModel">
+                    <mat-error *ngIf="title.invalid">
+                        Please add a problem's source website
+                    </mat-error>
+                </mat-form-field>
+            </div>
            <div>
                 <mat-form-field>
                     <input 

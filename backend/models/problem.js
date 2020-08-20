@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const problemSchema = mongoose.Schema({
+    source: String,
     title: { type: String, required: true},
     reasons: String,
     solved: String,

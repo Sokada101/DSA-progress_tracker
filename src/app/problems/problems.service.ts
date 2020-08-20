@@ -19,7 +19,8 @@ export class ProblemsService {
     }
 
     getProblem (id: string) {
-        return this.http.get<{ _id: string, title: string, reasons: string, solved: string, creator: string }>(
+        return this.http.get<{
+            _id: string, source: string,title: string, reasons: string, solved: string, creator: string }>(
              BACKEND_URL + id
             );
     }
@@ -33,6 +34,7 @@ export class ProblemsService {
           return {problems: probData.problems.map(prob => {
               return {
                   id: prob._id,
+                  source: prob.source,
                   title: prob.title,
                   reasons: prob.reasons,
                   solved: prob.solved,
@@ -60,6 +62,7 @@ export class ProblemsService {
                         problems: probData.problems.map(prob => {
                             return {
                                 id: prob._id,
+                                source: prob.source,
                                 title: prob.title,
                                 reasons: prob.reasons,
                                 solved: prob.solved,
@@ -87,6 +90,7 @@ export class ProblemsService {
                         problems: probData.problems.map(prob => {
                             return {
                                 id: prob._id,
+                                source: prob.source,
                                 title: prob.title,
                                 reasons: prob.reasons,
                                 solved: prob.solved,
@@ -109,16 +113,16 @@ export class ProblemsService {
     };
 
     
-    addProblem(title: string, reasons: string, solved: string) {
-        const problem: Problem = { id: '', title: title, reasons: reasons, solved: solved, creator: null  };
+    addProblem(source: string, title: string, reasons: string, solved: string) {
+        const problem: Problem = { id: '', source: source,title: title, reasons: reasons, solved: solved, creator: null  };
         this.http.post<{message: string, problemId: string}>( BACKEND_URL, problem)
         .subscribe((resData) => {
             this.router.navigate(["/problems/all"]);
         });
     };
 
-    updateProblem(id: string, title: string, reasons: string, solved: string) {
-        const problem: Problem = { id: id, title: title, reasons: reasons, solved: solved, creator: null  };
+    updateProblem(id: string, source: string, title: string, reasons: string, solved: string) {
+        const problem: Problem = { id: id, source: source, title: title, reasons: reasons, solved: solved, creator: null  };
         this.http.put( BACKEND_URL + id, problem)
         .subscribe((response) => {
             this.router.navigate(["/problems/all"]);
