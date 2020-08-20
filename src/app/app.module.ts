@@ -11,7 +11,6 @@ import { AppComponent } from './app.component';
 import { ErrorComponent } from './error/error.component';
 import { HeaderComponent } from './header/header.component'; 
 import { ProblemsModule } from "./problems/problem.module";
-import { FilterPipe } from './problems/pipes/filter.pipe';
  
 import { AuthInterceptor } from "./auth/auth-interceptor";
 import { ErrorInterceptor } from './error-interceptor';
