@@ -66,9 +66,11 @@ export class SolvedProblemListComponent implements OnInit, OnDestroy {
   }
 
   onChangedPage(pageData: PageEvent) {
+    debugger
     this.isLoading = true;
     this.currentPage = pageData.pageIndex + 1;
     this.rowsPerPage = pageData.pageSize;
-    this.problemsService.getProblems(this.rowsPerPage, this.currentPage);
+    this.problemsService.getSolvedProblems(this.rowsPerPage, this.currentPage);
+    debugger
   }
 }

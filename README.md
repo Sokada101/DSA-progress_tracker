@@ -21,6 +21,4 @@ Back End
 * User authentication 
 * Ability to log their problems that users have solved. 
 * Ability to check which problems users need to revisit. 
-<br>
-(In Progress Feature)
 * Ability to search problems that users have logged.

@@ -54,9 +54,6 @@ div.search-bar {
    margin: 0 0 0.45rem 0;
 }
 
-::ng-deep.mat-form-field-underline {
-  background-color: white !important;
-} 
 
 ::ng-deep.mat-form-field-ripple {
  background-color: #374785 !important;;

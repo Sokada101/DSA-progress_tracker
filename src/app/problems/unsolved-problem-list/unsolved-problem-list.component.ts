@@ -69,6 +69,6 @@ export class UnsolvedProblemListComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.currentPage = pageData.pageIndex + 1;
     this.rowsPerPage = pageData.pageSize;
-    this.problemsService.getProblems(this.rowsPerPage, this.currentPage);
+    this.problemsService.getUnsolvedProblems(this.rowsPerPage, this.currentPage);
   }
 }

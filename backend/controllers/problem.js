@@ -128,7 +128,7 @@ exports.getSolvedProblems = (req, res, next) => {
   probQuery
     .then((data) => {
       fetchedProblems = data;
-      return Problem.countDocuments({ creator: req.userData.userId, solved: "false" });
+      return Problem.countDocuments({ creator: req.userData.userId, solved: "true" });
     })
     .then((count) => {
       res.status(200).json({
