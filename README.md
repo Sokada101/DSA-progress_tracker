@@ -19,6 +19,8 @@ Back End
 ## Features
 
 * User authentication 
-* Ability to log their problems that users have solved. 
+* Ability to log the problems that users have solved. 
+* Ability to log the problems that users have unsolved. 
 * Ability to check which problems users need to revisit. 
 * Ability to search problems that users have logged.
+* Ability to use pagination. 
