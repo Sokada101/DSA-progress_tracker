@@ -6,7 +6,7 @@
                <input matInput type="search" class="search-box" placeholder="Search" class="search-input" [(ngModel)]="searchText">
             </mat-form-field>
    </div>
-   <mat-expansion-panel *ngFor="let problem of problems | filter: searchText" >
+   <mat-expansion-panel *ngFor="let problem of problems | filter: searchText | paginate: {itemsPerPage: rowsPerPage, currentPage: currentPage, totalItems: totalProbs}" >
         <mat-expansion-panel-header>
            <div [className]="problem.solved === 'true' ? 'solved-class' : 'not-solved-class'" *ngIf="(problem.source)">
             Problem Title:  {{ problem.title }} from {{ problem.source }}

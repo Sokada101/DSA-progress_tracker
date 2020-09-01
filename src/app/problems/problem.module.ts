@@ -8,6 +8,8 @@ import { UnsolvedProblemListComponent } from "./unsolved-problem-list/unsolved-p
 import { AngularMaterialModule } from '../angular-material.module';
 import { RouterModule } from '@angular/router';
 import { FilterPipe } from './pipes/filter.pipe';
+import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
+
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { FilterPipe } from './pipes/filter.pipe';
         CommonModule,
         AngularMaterialModule,
         RouterModule,
+        NgxPaginationModule
     ],
 })
 

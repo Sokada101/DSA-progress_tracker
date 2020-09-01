@@ -46,7 +46,7 @@ mat-paginator {
 }
 
 .prob-reason {
-   white-space: pre-line;
+   white-space:  pre-wrap;
 }
 
 .search-input {

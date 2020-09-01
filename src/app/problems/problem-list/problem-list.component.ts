@@ -13,6 +13,7 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./problem-list.component.css'],
 })
 export class ProblemListComponent implements OnInit, OnDestroy {
+  p: number = 1;
   searchText  = "";
   problems: Problem[] = [];
   isLoading = false;
@@ -67,9 +68,18 @@ export class ProblemListComponent implements OnInit, OnDestroy {
   }
 
   onChangedPage(pageData: PageEvent) {
+    debugger
     this.isLoading = true;
     this.currentPage = pageData.pageIndex + 1;
     this.rowsPerPage = pageData.pageSize;
+    this.problemsService.getProblems(this.rowsPerPage, this.currentPage);
+  }
+
+  pageChanged(data){
+    debugger
+    this.isLoading = true;
+    this.currentPage = data;
+    this.rowsPerPage = 10;
     this.problemsService.getProblems(this.rowsPerPage, this.currentPage);
   }
 }
