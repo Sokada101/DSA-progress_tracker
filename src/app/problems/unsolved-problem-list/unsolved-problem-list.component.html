@@ -2,13 +2,13 @@
 <mat-accordion *ngIf="problems.length > 0 && !isLoading ">
    <div class="search-bar">
       <mat-form-field class="prob-bar">
-         <mat-icon class="material-icons" matPrefix>search</mat-icon>
-         <input matInput type="search" class="search-box" placeholder="Search" class="search-input"
-            [(ngModel)]="searchText">
+            <mat-icon class="material-icons" matPrefix>search</mat-icon>
+            <input matInput type="search" class="search-box" placeholder="Search" class="search-input" [(ngModel)]="searchText"
+               (change)="onSearch($event)">
       </mat-form-field>
    </div>
    
-   <mat-expansion-panel *ngFor="let problem of problems | filter: searchText" >
+   <mat-expansion-panel *ngFor="let problem of problems | filter: searchText | paginate: {itemsPerPage: rowsPerPage, currentPage: currentPage, totalItems: totalProbs}" >
         <mat-expansion-panel-header>
             <div [className]="problem.solved === 'true' ? 'solved-class' : 'not-solved-class'" *ngIf="(problem.source)">
                Problem Title: {{ problem.title }} from {{ problem.source }}
@@ -31,6 +31,6 @@
 [pageSize]="rowsPerPage" 
 [pageSizeOptions]="pageSizeOptions" 
 (page)="onChangedPage($event)"
-*ngIf="problems.length > 0">
+*ngIf="problems.length > 0 && searchText.length <= 0">
 </mat-paginator>
 <p class="no-problem-added mat-body-2" *ngIf="problems.length <= 0 && !isLoading">No Problems added yet</p>

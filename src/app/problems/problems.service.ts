@@ -25,8 +25,8 @@ export class ProblemsService {
             );
     }
 
-    getProblems(rowsPerPage: number, currentPage: number) {
-      const queryParams = `?pagesize=${rowsPerPage}&page=${currentPage}`;
+    getProblems(rowsPerPage: number, currentPage: number, searchText: string) {
+      const queryParams = `?pagesize=${rowsPerPage}&page=${currentPage}&text=${searchText}`;
       this.http
       .get<{message: string; problems: any, maxProbs: number}>( BACKEND_URL + queryParams)
       .pipe(
@@ -52,7 +52,7 @@ export class ProblemsService {
       });
     };
 
-    getUnsolvedProblems(rowsPerPage: number, currentPage: number) {
+    getUnsolvedProblems(rowsPerPage: number, currentPage: number, searchText: string) {
         const queryParams = `?pagesize=${rowsPerPage}&page=${currentPage}`;
         this.http
             .get<{ message: string; problems: any, maxProbs: number }>(BACKEND_URL + "unsolved/" + queryParams)
@@ -80,8 +80,8 @@ export class ProblemsService {
             });
     };
 
-    getSolvedProblems(rowsPerPage: number, currentPage: number) {
-        const queryParams = `?pagesize=${rowsPerPage}&page=${currentPage}`;
+    getSolvedProblems(rowsPerPage: number, currentPage: number, searchText: string) {
+        const queryParams = `?pagesize=${rowsPerPage}&page=${currentPage}&text=${searchText}`;
         this.http
             .get<{ message: string; problems: any, maxProbs: number }>(BACKEND_URL + "solved/" + queryParams)
             .pipe(

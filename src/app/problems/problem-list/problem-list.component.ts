@@ -13,7 +13,6 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./problem-list.component.css'],
 })
 export class ProblemListComponent implements OnInit, OnDestroy {
-  p: number = 1;
   searchText  = "";
   problems: Problem[] = [];
   isLoading = false;
@@ -33,7 +32,7 @@ export class ProblemListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.isLoading = true;
-    this.problemsService.getProblems(this.rowsPerPage, this.currentPage);
+    this.problemsService.getProblems(this.rowsPerPage, this.currentPage, this.searchText);
     this.userId = this.authService.getUserId();
     this.problemsSub = this.problemsService
     .getProblemUpdateListner()
@@ -61,25 +60,22 @@ export class ProblemListComponent implements OnInit, OnDestroy {
   onDelete(problemId: string) {
     this.isLoading = true;
     this.problemsService.deleteProblem(problemId).subscribe(() => {
-      this.problemsService.getProblems(this.rowsPerPage, this.currentPage);
+      this.problemsService.getProblems(this.rowsPerPage, this.currentPage, this.searchText);
     }, () => {
       this.isLoading = false;
     });
   }
 
   onChangedPage(pageData: PageEvent) {
-    debugger
     this.isLoading = true;
     this.currentPage = pageData.pageIndex + 1;
     this.rowsPerPage = pageData.pageSize;
-    this.problemsService.getProblems(this.rowsPerPage, this.currentPage);
+    this.problemsService.getProblems(this.rowsPerPage, this.currentPage, this.searchText);
   }
 
-  pageChanged(data){
-    debugger
-    this.isLoading = true;
-    this.currentPage = data;
-    this.rowsPerPage = 10;
-    this.problemsService.getProblems(this.rowsPerPage, this.currentPage);
+  onSearch(event) {
+    this.currentPage = 1;
+    // this.rowsPerPage = pageData.pageSize;
+    this.problemsService.getProblems(this.rowsPerPage, this.currentPage, this.searchText);
   }
 }

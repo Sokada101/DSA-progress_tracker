@@ -31,7 +31,7 @@ export class SolvedProblemListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.isLoading = true;
-    this.problemsService.getSolvedProblems(this.rowsPerPage, this.currentPage);
+    this.problemsService.getSolvedProblems(this.rowsPerPage, this.currentPage, this.searchText);
     this.userId = this.authService.getUserId();
     this.problemsSub = this.problemsService
     .getProblemUpdateListner()
@@ -59,18 +59,22 @@ export class SolvedProblemListComponent implements OnInit, OnDestroy {
   onDelete(problemId: string) {
     this.isLoading = true;
     this.problemsService.deleteProblem(problemId).subscribe(() => {
-      this.problemsService.getSolvedProblems(this.rowsPerPage, this.currentPage);
+      this.problemsService.getSolvedProblems(this.rowsPerPage, this.currentPage, this.searchText);
     }, () => {
       this.isLoading = false;
     });
   }
 
   onChangedPage(pageData: PageEvent) {
-    debugger
     this.isLoading = true;
     this.currentPage = pageData.pageIndex + 1;
     this.rowsPerPage = pageData.pageSize;
-    this.problemsService.getSolvedProblems(this.rowsPerPage, this.currentPage);
-    debugger
+    this.problemsService.getSolvedProblems(this.rowsPerPage, this.currentPage,this.searchText);
+  }
+  
+  onSearch(event) {
+    this.currentPage = 1;
+    // this.rowsPerPage = pageData.pageSize;
+    this.problemsService.getSolvedProblems(this.rowsPerPage, this.currentPage, this.searchText);
   }
 }

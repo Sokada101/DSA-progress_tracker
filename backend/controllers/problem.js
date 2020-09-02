@@ -59,8 +59,8 @@ exports.getProblems = (req, res, next) => {
 
   if (pageSize && currentPage) {
     probQuery
-      .skip(pageSize * (currentPage - 1))
-      .limit(pageSize)
+      // .skip(pageSize * (currentPage - 1))
+      // .limit(pageSize)
       .sort({ _id: -1 });
   }
   probQuery
@@ -90,9 +90,9 @@ exports.getUnsolvedProblems = (req, res, next) => {
 
   if (pageSize && currentPage) {
     probQuery
-      .skip(pageSize * (currentPage - 1))
-      .limit(pageSize)
       .sort({ _id: -1 });
+      // .skip(pageSize * (currentPage - 1))
+      // .limit(pageSize)
   }
   probQuery
     .then((data) => {
@@ -118,13 +118,12 @@ exports.getSolvedProblems = (req, res, next) => {
   const currentPage = +req.query.page;
   const probQuery = Problem.find({ creator: req.userData.userId, solved: "true" });
   let fetchedProblems;
-
   if (pageSize && currentPage) {
     probQuery
-      .skip(pageSize * (currentPage - 1))
-      .limit(pageSize)
-      .sort({ _id: -1 });
-  }
+      .sort({ _id: -1 })
+      // .skip(pageSize * (currentPage - 1))
+      // .limit(pageSize)
+  } 
   probQuery
     .then((data) => {
       fetchedProblems = data;
