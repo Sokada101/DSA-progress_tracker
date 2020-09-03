@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http'; 
+import { Location } from '@angular/common'; 
 import { map } from 'rxjs/operators';
 import { Router } from "@angular/router";
 
@@ -15,7 +16,7 @@ export class ProblemsService {
     private problems: Problem[] = [];
     private problemsUpdated = new Subject< {problems: Problem[], probCount: number }>();
 
-    constructor(private http: HttpClient, private router: Router) {
+    constructor(private http: HttpClient, private router: Router, private _location: Location) {
     }
 
     getProblem (id: string) {
@@ -125,7 +126,8 @@ export class ProblemsService {
         const problem: Problem = { id: id, source: source, title: title, reasons: reasons, solved: solved, creator: null  };
         this.http.put( BACKEND_URL + id, problem)
         .subscribe((response) => {
-            this.router.navigate(["/problems/all"]);
+            debugger
+            this._location.back();
         });
     }
 
