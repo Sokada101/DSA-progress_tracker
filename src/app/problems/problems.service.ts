@@ -126,7 +126,6 @@ export class ProblemsService {
         const problem: Problem = { id: id, source: source, title: title, reasons: reasons, solved: solved, creator: null  };
         this.http.put( BACKEND_URL + id, problem)
         .subscribe((response) => {
-            debugger
             this._location.back();
         });
     }
