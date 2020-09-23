@@ -109,7 +109,6 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('expiration');
     localStorage.removeItem('userId');
-
   }
 
   private getAuthData() {
@@ -117,7 +116,7 @@ export class AuthService {
     const expirationDate = localStorage.getItem('expiration');
     const userId = localStorage.getItem('userId');
     if (!token || !expirationDate) {
-      return;
+      return this.logout();
     }
     return {
       token: token,
