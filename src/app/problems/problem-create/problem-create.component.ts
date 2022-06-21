@@ -87,7 +87,6 @@ export class ProblemCreateComponent implements OnInit, OnDestroy {
     if (form.invalid) {
       return;
     }
-    debugger
     this.isLoading = true;
     if (this.mode === 'create') {
       this.problemsService.addProblem(form.value.source, form.value.title, form.value.link, form.value.reasons, form.value.solved);
