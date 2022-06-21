@@ -21,7 +21,7 @@ export class ProblemsService {
 
     getProblem (id: string) {
         return this.http.get<{
-            _id: string, source: string,title: string, reasons: string, solved: string, creator: string }>(
+            _id: string, source: string, title: string, link: string, reasons: string, solved: string, creator: string }>(
              BACKEND_URL + id
             );
     }
@@ -37,6 +37,7 @@ export class ProblemsService {
                   id: prob._id,
                   source: prob.source,
                   title: prob.title,
+                  link: prob.link,
                   reasons: prob.reasons,
                   solved: prob.solved,
                   creator: prob.creator
@@ -65,6 +66,7 @@ export class ProblemsService {
                                 id: prob._id,
                                 source: prob.source,
                                 title: prob.title,
+                                link: prob.link,
                                 reasons: prob.reasons,
                                 solved: prob.solved,
                                 creator: prob.creator
@@ -93,6 +95,7 @@ export class ProblemsService {
                                 id: prob._id,
                                 source: prob.source,
                                 title: prob.title,
+                                link: prob.link,
                                 reasons: prob.reasons,
                                 solved: prob.solved,
                                 creator: prob.creator
@@ -111,19 +114,19 @@ export class ProblemsService {
 
     getProblemUpdateListner() {
         return this.problemsUpdated.asObservable();
-    };
+    }
 
-    
-    addProblem(source: string, title: string, reasons: string, solved: string) {
-        const problem: Problem = { id: '', source: source,title: title, reasons: reasons, solved: solved, creator: null  };
+
+    addProblem(source: string, title: string, link: string, reasons: string, solved: string) {
+        const problem: Problem = { id: '', source: source, title: title, link: link, reasons: reasons, solved: solved, creator: null  };
         this.http.post<{message: string, problemId: string}>( BACKEND_URL, problem)
         .subscribe((resData) => {
             this.router.navigate(["/problems/all"]);
         });
-    };
+    }
 
-    updateProblem(id: string, source: string, title: string, reasons: string, solved: string) {
-        const problem: Problem = { id: id, source: source, title: title, reasons: reasons, solved: solved, creator: null  };
+    updateProblem(id: string, source: string, title: string, link: string, reasons: string, solved: string) {
+        const problem: Problem = { id: id, source: source, title: title, link: link, reasons: reasons, solved: solved, creator: null  };
         this.http.put( BACKEND_URL + id, problem)
         .subscribe((response) => {
             this._location.back();
@@ -132,5 +135,5 @@ export class ProblemsService {
 
     deleteProblem(problemId: string) {
       return this.http.delete( BACKEND_URL + problemId)
-    };
+    }
 }

@@ -16,6 +16,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class ProblemCreateComponent implements OnInit, OnDestroy {
     source = "";
     title = "";
+    link = "";
     reasons = "";
     solved = "";
     default = true;
@@ -47,10 +48,11 @@ export class ProblemCreateComponent implements OnInit, OnDestroy {
                 this.problemsService.getProblem(this.probId).subscribe(problemData => {
                     this.isLoading = false;
                     this.problem = {
-                        id: problemData._id, 
+                        id: problemData._id,
                         source: problemData.source,
-                        title: problemData.title, 
-                        reasons: problemData.reasons, 
+                        title: problemData.title,
+                        link: problemData.link,
+                        reasons: problemData.reasons,
                         solved: problemData.solved,
                         creator: problemData.creator
                     };
@@ -82,24 +84,26 @@ export class ProblemCreateComponent implements OnInit, OnDestroy {
         if (form.invalid) {
             return;
         }
+        debugger
         this.isLoading = true;
         if(this.mode === 'create') {
-           this.problemsService.addProblem(form.value.source,form.value.title, form.value.reasons, form.value.solved );
+           this.problemsService.addProblem(form.value.source, form.value.title, form.value.link, form.value.reasons, form.value.solved );
         } else {
-            if (this.solvedOrNot) { 
-                form.value.reasons = "" 
-            };
+            if (this.solvedOrNot) {
+                form.value.reasons = '';
+            }
            this.problemsService.updateProblem(
-               this.probId, 
+               this.probId,
                form.value.source,
-               form.value.title, 
-               form.value.reasons, 
+               form.value.title,
+               form.value.link,
+               form.value.reasons,
                form.value.solved
-            )
+            );
         }
         form.resetForm();
         this.default = true;
-    };
+    }
 
     ngOnDestroy(){
         this.authStatusSub.unsubscribe();

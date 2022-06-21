@@ -4,10 +4,12 @@ exports.createProblem = (req, res, next) => {
   const problem = new Problem({
     source: req.body.source,
     title: req.body.title,
+    link: req.body.link,
     reasons: req.body.reasons,
     solved: req.body.solved,
     creator: req.userData.userId,
   });
+
   problem
     .save()
     .then((result) => {
@@ -27,6 +29,7 @@ exports.updateProblem =( req, res, next) => {
   const problem = new Problem({
     _id: req.body.id,
     source: req.body.source,
+    link: req.body.link,
     title: req.body.title,
     reasons: req.body.reasons,
     solved: req.body.solved,
