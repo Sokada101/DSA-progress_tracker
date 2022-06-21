@@ -1,10 +1,10 @@
- a {
-    color: white ;
+a {
+    color: white;
     text-decoration: none;
     display: inline-block;
 }
 
-mat-nav-list a + button{
+mat-nav-list a + button {
     text-align: left;
     color: white;
 }
@@ -51,15 +51,17 @@ mat-toolbar button {
     top: 0;
     z-index: 1;
 }
+
 /* // here  */
 html, body {
     height: 100%;
 }
 
-mat-toolbar.button{ 
+mat-toolbar.button {
     color: white;
 }
-/*  
+
+/*
 
 @media (min-width: 500px) {
     .sidenav {
@@ -67,7 +69,7 @@ mat-toolbar.button{
     }
 } */
 
-.hidden{ 
+.hidden {
     display: none;
 }
 
@@ -79,11 +81,11 @@ mat-toolbar.button{
 }
 
 mat-sidenav-container {
-        background-color: #b0aeae;
+    background-color: #b0aeae;
 }
 
 .mat-sidenav {
-    background-color:#8f8c8d;
+    background-color: #8f8c8d;
 }
 
 

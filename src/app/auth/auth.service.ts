@@ -1,16 +1,16 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'; 
-import { Router } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
 
-import { AuthData } from './auth-data.model';
-import { Subject } from 'rxjs';
+import {AuthData} from './auth-data.model';
+import {Subject} from 'rxjs';
 
-import { environment } from '../../environments/environment';
+import {environment} from '../../environments/environment';
 
 
 const BACKEND_URL = environment.apiUrl + '/user/';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class AuthService {
   private token: string;
   private isAuthenticated = false;
@@ -18,7 +18,8 @@ export class AuthService {
   private userId: string;
   private authStatusListener = new Subject<boolean>();
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {
+  }
 
   getToken() {
     return this.token;
@@ -28,7 +29,7 @@ export class AuthService {
     return this.isAuthenticated;
   }
 
-  getUserId () {
+  getUserId() {
     return this.userId;
   }
 
@@ -37,23 +38,22 @@ export class AuthService {
   }
 
   createUser(email: string, password: string) {
-    const authData: AuthData = { email: email, password: password };
+    const authData: AuthData = {email: email, password: password};
     return this.http
-      .post(BACKEND_URL + "signup", authData)
+      .post(BACKEND_URL + 'signup', authData)
       .subscribe((response) => {
-          this.login(authData.email, authData.password)
+        this.login(authData.email, authData.password);
       }, error => {
         this.authStatusListener.next(false);
       });
   }
 
 
-
   login(email: string, password: string) {
-    const authData: AuthData = { email: email, password: password };
+    const authData: AuthData = {email: email, password: password};
     this.http
       .post<{ token: string, expiresIn: number, userId: string }>(
-        BACKEND_URL + "login",
+        BACKEND_URL + 'login',
         authData
       )
       .subscribe((response) => {
@@ -63,7 +63,7 @@ export class AuthService {
           const expiresInDuration = response.expiresIn;
           this.setAuthTimer(expiresInDuration);
           this.isAuthenticated = true;
-          this.userId = response.userId
+          this.userId = response.userId;
           this.authStatusListener.next(true);
           const now = new Date();
           const expirationDate = new Date(
@@ -102,7 +102,7 @@ export class AuthService {
   private saveAuthData(token: string, expirationDate: Date, userId: string) {
     localStorage.setItem('token', token);
     localStorage.setItem('expiration', expirationDate.toISOString());
-    localStorage.setItem("userId", userId);
+    localStorage.setItem('userId', userId);
   }
 
   private clearAuthData() {

@@ -10,7 +10,7 @@ const app = express();
 
 mongoose
   .connect(
-    "mongodb+srv://dev:"+ process.env.MONGO_ATLAS_PW + "@cluster0.m92hu.mongodb.net/?retryWrites=true&w=majority",
+    "mongodb+srv://dev:" + process.env.MONGO_ATLAS_PW + "@cluster0.m92hu.mongodb.net/?retryWrites=true&w=majority",
     { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => {
@@ -21,7 +21,7 @@ mongoose
   });
 
 app.use(bodyParser.json());
-app.use("/",express.static(path.join( __dirname, "angular")));
+app.use("/", express.static(path.join(__dirname, "angular")));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -36,12 +36,11 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/api/problems",problemsRoutes);
+app.use("/api/problems", problemsRoutes);
 app.use("/api/user", userRoutes);
-app.use((req,res,next) => {
+app.use((req, res, next) => {
   res.sendFile(__dirname, path.join("angular", "index.html"));
 });
-
 
 
 module.exports = app;

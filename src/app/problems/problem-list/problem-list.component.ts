@@ -1,4 +1,4 @@
-import { Component,OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { PageEvent } from '@angular/material/paginator';
 
@@ -13,14 +13,14 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./problem-list.component.css'],
 })
 export class ProblemListComponent implements OnInit, OnDestroy {
-  searchText  = "";
+  searchText = '';
   problems: Problem[] = [];
   isLoading = false;
   userId: string;
   totalProbs = 0;
   rowsPerPage = 10;
   currentPage = 1;
-  pageSizeOptions = [5, 10, 20, 50 ,100];
+  pageSizeOptions = [5, 10, 20, 50, 100];
   userIsAuthenticated = false;
   private problemsSub: Subscription;
   private authStatusSub: Subscription;
@@ -28,17 +28,18 @@ export class ProblemListComponent implements OnInit, OnDestroy {
   constructor(
     public problemsService: ProblemsService,
     private authService: AuthService,
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.isLoading = true;
     this.problemsService.getProblems(this.rowsPerPage, this.currentPage);
     this.userId = this.authService.getUserId();
     this.problemsSub = this.problemsService
-    .getProblemUpdateListner()
-    .subscribe((problemData: { problems: Problem[]; probCount: number }) => {
-      this.isLoading = false;
-      this.totalProbs = problemData.probCount;
+      .getProblemUpdateListner()
+      .subscribe((problemData: { problems: Problem[]; probCount: number }) => {
+        this.isLoading = false;
+        this.totalProbs = problemData.probCount;
         this.problems = problemData.problems;
         this.userId = this.authService.getUserId();
       });

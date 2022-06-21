@@ -10,8 +10,8 @@ import { AuthService } from '../auth.service';
 })
 export class DemoLoginComponent implements OnInit, OnDestroy {
   isLoading = false;
-  demoEmail = "demologin@demo.com"
-  demoLoginPassword = "demoLoginPassword"
+  demoEmail = 'demologin@demo.com';
+  demoLoginPassword = 'demoLoginPassword';
   private authStatusSub: Subscription;
 
   constructor(public authService: AuthService) {}

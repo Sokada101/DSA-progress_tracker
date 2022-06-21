@@ -15,7 +15,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
 
-  constructor(private authService: AuthService, private breakpointObserver: BreakpointObserver) {}
+  constructor(private authService: AuthService, private breakpointObserver: BreakpointObserver) {
+  }
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -23,7 +24,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       shareReplay()
     );
 
-  onLogout(){
+  onLogout() {
     this.authService.logout();
   }
 
@@ -39,4 +40,4 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.authListenerSubs.unsubscribe();
   }
-};
+}

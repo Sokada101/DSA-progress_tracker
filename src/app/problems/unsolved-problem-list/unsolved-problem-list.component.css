@@ -34,10 +34,10 @@ mat-paginator {
 }
 
 .search-box {
-   outline: none;
-   color:  #24305e;
-   margin: 1rem 0;
-   align-items: flex-end;
+    outline: none;
+    color: #24305e;
+    margin: 1rem 0;
+    align-items: flex-end;
 }
 
 div.search-bar {
@@ -46,22 +46,22 @@ div.search-bar {
 }
 
 .prob-reason {
-    white-space:  pre-wrap;
+    white-space: pre-wrap;
 }
 
 
 .search-input {
-   margin: 0 0 0.45rem 0;
+    margin: 0 0 0.45rem 0;
 }
 
 ::ng-deep.mat-form-field-ripple {
- background-color: #374785 !important;;
+    background-color: #374785 !important;;
 }
 
- ::ng-deep .mat-focused .mat-form-field-label {
-  /*change color of label*/
-  color: #374785 !important;;
- }
+::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: #374785 !important;;
+}
 
 .prob-bar {
     justify-items: flex-end;

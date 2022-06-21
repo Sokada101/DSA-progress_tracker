@@ -1,4 +1,4 @@
-import { Component,OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { PageEvent } from '@angular/material/paginator';
 
@@ -12,7 +12,7 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./unsolved-problem-list.component.css'],
 })
 export class UnsolvedProblemListComponent implements OnInit, OnDestroy {
-  searchText = ""; 
+  searchText = '';
   problems: Problem[] = [];
   isLoading = false;
   userId: string;
@@ -27,17 +27,18 @@ export class UnsolvedProblemListComponent implements OnInit, OnDestroy {
   constructor(
     public problemsService: ProblemsService,
     private authService: AuthService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.isLoading = true;
     this.problemsService.getUnsolvedProblems(this.rowsPerPage, this.currentPage);
     this.userId = this.authService.getUserId();
     this.problemsSub = this.problemsService
-    .getProblemUpdateListner()
-    .subscribe((problemData: { problems: Problem[]; probCount: number }) => {
-      this.isLoading = false;
-      this.totalProbs = problemData.probCount;
+      .getProblemUpdateListner()
+      .subscribe((problemData: { problems: Problem[]; probCount: number }) => {
+        this.isLoading = false;
+        this.totalProbs = problemData.probCount;
         this.problems = problemData.problems;
         this.userId = this.authService.getUserId();
       });
@@ -73,7 +74,7 @@ export class UnsolvedProblemListComponent implements OnInit, OnDestroy {
   }
 
   onSearch(event) {
-    console.log(this.searchText)
+    console.log(this.searchText);
     this.currentPage = 1;
     // this.rowsPerPage = pageData.pageSize;
     this.problemsService.getUnsolvedProblems(this.rowsPerPage, this.currentPage);

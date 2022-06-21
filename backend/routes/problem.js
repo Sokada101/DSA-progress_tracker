@@ -11,14 +11,14 @@ router.post("", checkAuth, problemController.createProblem);
 
 router.put("/:id", checkAuth, problemController.updateProblem);
 
-router.get("", checkAuth,  problemController.getProblems );
+router.get("", checkAuth, problemController.getProblems);
 
 router.get("/unsolved", checkAuth, problemController.getUnsolvedProblems);
 
 router.get("/solved", checkAuth, problemController.getSolvedProblems);
 
-router.get("/:id", checkAuth, problemController.getProblem );
+router.get("/:id", checkAuth, problemController.getProblem);
 
-router.delete("/:id", checkAuth, problemController.deleteProblem );
+router.delete("/:id", checkAuth, problemController.deleteProblem);
 
 module.exports = router;

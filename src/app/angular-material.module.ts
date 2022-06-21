@@ -13,7 +13,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatMenuModule } from '@angular/material/menu';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -40,4 +40,5 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatProgressBarModule,
   ],
 })
-export class AngularMaterialModule {}
+export class AngularMaterialModule {
+}

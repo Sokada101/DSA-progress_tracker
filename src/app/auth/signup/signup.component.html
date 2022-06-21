@@ -7,10 +7,10 @@
         </mat-form-field>
         <mat-form-field>
             <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel"
-                required>
+                   required>
             <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
         </mat-form-field>
         <br>
-        <button  *ngIf="!isLoading"  mat-raised-button color="accent" type="submit">Sign Up</button>
+        <button *ngIf="!isLoading" mat-raised-button color="accent" type="submit">Sign Up</button>
     </form>
 </mat-card>
