@@ -12,6 +12,10 @@ div {
     flex-direction: column;
 }
 
+a {
+    text-decoration: none;
+}
+
 mat-spinner {
     margin: auto;
 }
